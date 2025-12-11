@@ -3,9 +3,138 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>HTML Semantics</title>
+        <style>
+            header {
+                display: flex;
+                justify-content: space-between;
+                justify-items: center;
+            }
+            nav ul {
+                display: flex;
+                gap: 10px;
+                list-style: none;
+            }
+            aside {
+                background-color: grey;
+            }
+            footer {
+                display: flex;
+                justify-content: space-between;
+                background-color: #eeeeee;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hello Nigeria</h1>
+        <!-- 
+        header
+        nav
+        main
+        section
+        aside
+        footer
+        article
+        details
+        summary
+        mark
+        time
+        figure
+        figcaption
+         -->
+        <header>
+            <h1>Logo</h1>
+            <nav>
+                <ul
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">About us</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h2>
+                    Supported by the best.
+                </h2>
+                <p>
+                    Tailwind is supported by incredible partners and sponsors who make it possible for a team of talented designers and engineers to maintain the framework full-time.
+                </p>
+                <button>Become a Sponsor</button>
+            </section>
+            <section>
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati nobis maxime alias perspiciatis soluta animi pariatur ex voluptas ullam, error culpa amet voluptates cupiditate repudiandae nemo voluptatum et accusamus. Nostrum!</p>
+            </section>
+            <section>
+                <h2>Popular Products</h2>
+                <article>
+                    <h4>Oraimo Power Bank</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ad inventore magni asperiores quae mollitia repudiandae enim, voluptas laborum, deserunt accusamus dignissimos pariatur voluptates explicabo labore, soluta quis at ex!</p>
+                </article>
+                <article>
+                    <h4>Oraimo Power Bank</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ad inventore magni asperiores quae mollitia repudiandae enim, voluptas laborum, deserunt accusamus dignissimos pariatur voluptates explicabo labore, soluta quis at ex!</p>
+                </article>
+            </section>
+            <section>
+                <h2>FAQs</h2>
+                <details>
+                    <summary>Do you have refund policy?</summary>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio quod porro tenetur similique perspiciatis adipisci numquam molestiae alias voluptate, aliquid quidem. Quisquam magnam, rem in at laborum cum fugiat aliquid.</p>
+                </details>
+                <details>
+                    <summary>Do you have refund policy?</summary>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio quod porro tenetur similique perspiciatis adipisci numquam molestiae alias voluptate, aliquid quidem. Quisquam magnam, rem in at laborum cum fugiat aliquid.</p>
+                </details>
+            </section>
+            <mark>Highlighted Text</mark> <br />
+            <time datetime="2025-12-12 20:00">10:00AM</time>
+            <figure>
+                <img src="https://plus.unsplash.com/premium_photo-1765356274742-04b452bb93c4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="xmas tree" style="width: 400px; height: 200px;">
+                <figcaption>Christmas Tree Image from unsplash</figcaption>
+            </figure>
+        </main>
+        <aside>
+            <h2>Popular links</h2>
+            <ul>
+                <li>
+                    <a href="#">Link 1</a>
+                </li>
+                <li>
+                    <a href="#">Link 2</a>
+                </li>
+                <li>
+                    <a href="#">Link 3</a>
+                </li>
+            </ul>
+        </aside>
+        <footer>
+            <p>&copy; 2025 NotZero Inc.</p>
+            <nav>
+                <ul
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">About us</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
     </body>
 </html>
