@@ -1,86 +1,154 @@
-//JS Variable
+//Operators
 
-//var is deprecated and is no more recommended
-//let and const
-//let - can not be redeclare but can be re-assign
-//const - can not be redeclare and can not be re-assign
+//Arithmetic
+const loanAmount = 2_000_000;
 
-//let
-let fullName1 = "James";
-fullName1 = "Doe";
+let interest = 0.075;
 
-//const
-const userAge = 20;
+const tenor = 6;
 
-//userAge = 20; // this will. throw an error
+if (tenor <= 0 || tenor > 24) {
+    throw Error("Please enter a valid tenor");
+}
 
-let name = "James",
-    email; //this works with let and not with const
+//if...else if ... else
+// if (tenor > 3 && tenor < 6) {
+//     interest = 0.1;
+// } else if (tenor >= 6 && tenor < 9) {
+//     interest = 0.12;
+// } else if (tenor >= 9 && tenor < 12) {
+//     interest = 0.15;
+// } else if (tenor >= 12) {
+//     interest = 0.2;
+// } else {
+//     interest = 0.075;
+// }
 
-const a = 100;
-const b = 200;
-let total = 100;
+switch (tenor) {
+    case 6:
+        interest = 0.1;
+        break;
+    case 9:
+        interest = 0.12;
+        break;
+    case 12:
+        interest = 0.15;
+        break;
+    default: {
+        interest = 0.075;
+        break;
+    }
+}
 
-total = a + b;
+console.log(interest);
 
-console.log(total);
+const vat = 2.5 / 100;
+const managementFee = 1 / 100;
 
-//Data types
-//Number
-//String
-//Boolean
-//Object
-//Array
-//Null
-//Undefined
-//Symbol
-//Set
-//Map
+const interestAmount = loanAmount * interest;
+const vatAmount = (loanAmount - interestAmount) * vat;
+const managementAmount = loanAmount * managementFee;
 
-//number
-const age = 10;
-const pi = 3.14;
-console.log(typeof age, typeof pi);
+const totalRepaymentAmount =
+    loanAmount + interestAmount + vatAmount + managementAmount;
 
-//string
-const firstName = 'John "25"';
-const lastName = "Doe";
-const fullName = firstName + " - " + lastName + " " + "Details";
-const fullName2 = `${firstName} - ${lastName} Details`;
-console.log(fullName2);
-console.log(typeof fullName2);
+console.log(
+    "Total repayment amount",
+    Intl.NumberFormat("en-NG", {
+        style: "currency",
+        currency: "NGN",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(totalRepaymentAmount),
+);
 
-const multiLine = `Hello,
-How are you?
-`;
+console.log(
+    "Interest amount",
+    Intl.NumberFormat("en-NG", {
+        style: "currency",
+        currency: "NGN",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(interestAmount),
+);
 
-console.log(multiLine);
+console.log(
+    "VAT amout",
+    Intl.NumberFormat("en-NG", {
+        style: "currency",
+        currency: "NGN",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(vatAmount),
+);
 
-//boolean
-const isEligible = false;
-const isDone = true;
+console.log(
+    "Managemenent fee",
+    Intl.NumberFormat("en-NG", {
+        style: "currency",
+        currency: "NGN",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(managementAmount),
+);
 
-console.log(typeof isDone, typeof isEligible);
+const number = 9;
 
-//Object
-const car = {
-    brand: "Toyota",
-    chasisNo: 1234,
-    isNew: false,
-};
+console.log(number % 2 === 0 ? "Even" : "Odd");
 
-console.log(typeof car.brand);
-console.log(typeof car);
+console.log(2 ** 3);
 
-//Array
-const array = [1, "James", true, fullName, car, { name: "John" }];
-console.log(array);
-console.log(typeof array);
+//Assignment
+let a = 12;
+// a = a + 20;
+a += 20;
 
-//Null
-let empty = null;
-console.log(typeof empty);
+console.log(a);
 
-//Undefined
-let notDefined = undefined;
-console.log(typeof notDefined);
+let message = "Hello, Good ";
+
+const timeOfDay = "afternoon";
+
+message += timeOfDay;
+
+console.log(message);
+
+//Comparison
+const b = 30;
+const c = 12;
+const d = 21;
+
+// if (typeof d !== "number") {
+//     throw Error("Not a number");
+// }
+
+console.log(c == d); //loose comparison
+console.log(c === d); //strict comparison
+
+console.log(c != d); //loose comparison
+console.log(c == d); //strict comparison
+
+console.log(d > c); // can only be used for numeric values
+console.log(d < c); // can only be used for numeric values
+console.log(d >= c); // can only be used for numeric values
+console.log(d <= c); // can only be used for numeric values
+
+console.log(!true);
+
+console.log(d + c);
+
+//Logical && - ||
+console.log(d > 20 && (a === b || c < 20));
+
+//Conditional Statement
+//if
+if (c == d) {
+    console.log("Is equal");
+} else {
+    //if...else
+    console.log("Not equal");
+}
+
+c < d ? console.log("Is equal") : console.log("Not equal");
+//ternary
+//switch
