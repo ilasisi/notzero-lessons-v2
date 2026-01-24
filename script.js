@@ -1,154 +1,166 @@
-//Operators
+//Loops
 
-//Arithmetic
-const loanAmount = 2_000_000;
+//for
+let array = [];
+let brands = ["Google", "Meta", "Apple", "Amazon", "Netflix"];
 
-let interest = 0.075;
-
-const tenor = 6;
-
-if (tenor <= 0 || tenor > 24) {
-    throw Error("Please enter a valid tenor");
-}
-
-//if...else if ... else
-// if (tenor > 3 && tenor < 6) {
-//     interest = 0.1;
-// } else if (tenor >= 6 && tenor < 9) {
-//     interest = 0.12;
-// } else if (tenor >= 9 && tenor < 12) {
-//     interest = 0.15;
-// } else if (tenor >= 12) {
-//     interest = 0.2;
-// } else {
-//     interest = 0.075;
+// for (let i = 0; i < 9; i++) {
+//     array.push("Lesson" + " " + (i + 1));
 // }
 
-switch (tenor) {
-    case 6:
-        interest = 0.1;
-        break;
-    case 9:
-        interest = 0.12;
-        break;
-    case 12:
-        interest = 0.15;
-        break;
-    default: {
-        interest = 0.075;
-        break;
+// for (let i = 0; i < brands.length; i++) {
+//     console.log(brands[i]);
+// }
+
+//while
+let i = 0;
+
+while (i < 0) {
+    array.push("Lesson" + " " + (i + 1));
+    i++;
+}
+
+//do ... while
+do {
+    array.push("Lesson" + " " + (i + 1));
+    i++;
+} while (i < 9);
+
+// console.log(array);
+
+//for ... of //array
+const fruits = ["Mango", "Orange", "Banana"];
+
+// for (fruit of fruits) {
+//     console.log(fruit);
+// }
+
+//for ... in // object
+// const car = {
+//     brand: "Toyota",
+//     color: "Black",
+//     chasisNo: "123-HNKDMS",
+//     engine: 12762637627662,
+// };
+
+// for (key in car) {
+//     console.log(key + ": " + car[key]);
+// }
+
+// for (key in brands) {
+//     console.log(brands[key]);
+// }
+
+// const menu = [
+//     {
+//         name: "New Tab",
+//         icon: "tab",
+//         link: "https://www.tab.com",
+//     },
+//     {
+//         name: "New Window",
+//         icon: "window",
+//         link: "https://www.window.com",
+//     },
+//     {
+//         name: "New Incognito Mode",
+//         icon: "incognito",
+//         link: "https://www.incognito.com",
+//     },
+// ];
+
+// for (item of menu) {
+//     console.log(`${item.name} - ${item.icon} - ${item.link}`);
+// }
+
+//Functions
+function greet(name, age, location) {
+    console.log(
+        `My name is ${name}, I am ${age} years old, living at ${location}`,
+    );
+}
+
+const greet2 = function (name = "Guest") {
+    return "Hello " + name;
+};
+
+const greet3 = () => {
+    return 1 + 10;
+};
+
+const greet4 = () => 2 + 2;
+
+greet("Bob", 20, "Lagos");
+greet("James", 12, "Calabar");
+greet("Doe", 45, "London");
+greet("John", 62, "Ghana");
+
+const sum = (a = 1, b = 2) => a + b;
+
+console.log(greet3());
+console.log(greet2());
+console.log(greet4());
+
+console.log(sum(10));
+
+function loanShark(
+    loanAmount,
+    tenor,
+    interest = 0.075,
+    vat = 0.025,
+    managementFee = 0.01,
+) {
+    if (tenor <= 0 || tenor > 24) {
+        throw Error("Please enter a valid tenor");
     }
+
+    if (tenor > 3 && tenor < 6) {
+        interest = 0.1;
+    } else if (tenor >= 6 && tenor < 9) {
+        interest = 0.12;
+    } else if (tenor >= 9 && tenor < 12) {
+        interest = 0.15;
+    } else if (tenor >= 12) {
+        interest = 0.2;
+    } else {
+        interest = 0.075;
+    }
+
+    const interestAmount = loanAmount * interest;
+    const vatAmount = (loanAmount - interestAmount) * vat;
+    const managementAmount = loanAmount * managementFee;
+
+    const totalRepaymentAmount =
+        loanAmount + interestAmount + vatAmount + managementAmount;
+
+    output("Total repayment amount", totalRepaymentAmount);
+    output("Interest amount", interestAmount);
+    output("VAT amount", vatAmount);
+    output("Management fee", managementAmount);
 }
 
-console.log(interest);
+loanShark(2_000_000, 5);
+loanShark(2_000_000, 5, 0.05, 0.03);
 
-const vat = 2.5 / 100;
-const managementFee = 1 / 100;
-
-const interestAmount = loanAmount * interest;
-const vatAmount = (loanAmount - interestAmount) * vat;
-const managementAmount = loanAmount * managementFee;
-
-const totalRepaymentAmount =
-    loanAmount + interestAmount + vatAmount + managementAmount;
-
-console.log(
-    "Total repayment amount",
-    Intl.NumberFormat("en-NG", {
-        style: "currency",
-        currency: "NGN",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    }).format(totalRepaymentAmount),
-);
-
-console.log(
-    "Interest amount",
-    Intl.NumberFormat("en-NG", {
-        style: "currency",
-        currency: "NGN",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    }).format(interestAmount),
-);
-
-console.log(
-    "VAT amout",
-    Intl.NumberFormat("en-NG", {
-        style: "currency",
-        currency: "NGN",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    }).format(vatAmount),
-);
-
-console.log(
-    "Managemenent fee",
-    Intl.NumberFormat("en-NG", {
-        style: "currency",
-        currency: "NGN",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    }).format(managementAmount),
-);
-
-const number = 9;
-
-console.log(number % 2 === 0 ? "Even" : "Odd");
-
-console.log(2 ** 3);
-
-//Assignment
-let a = 12;
-// a = a + 20;
-a += 20;
-
-console.log(a);
-
-let message = "Hello, Good ";
-
-const timeOfDay = "afternoon";
-
-message += timeOfDay;
-
-console.log(message);
-
-//Comparison
-const b = 30;
-const c = 12;
-const d = 21;
-
-// if (typeof d !== "number") {
-//     throw Error("Not a number");
-// }
-
-console.log(c == d); //loose comparison
-console.log(c === d); //strict comparison
-
-console.log(c != d); //loose comparison
-console.log(c == d); //strict comparison
-
-console.log(d > c); // can only be used for numeric values
-console.log(d < c); // can only be used for numeric values
-console.log(d >= c); // can only be used for numeric values
-console.log(d <= c); // can only be used for numeric values
-
-console.log(!true);
-
-console.log(d + c);
-
-//Logical && - ||
-console.log(d > 20 && (a === b || c < 20));
-
-//Conditional Statement
-//if
-if (c == d) {
-    console.log("Is equal");
-} else {
-    //if...else
-    console.log("Not equal");
+function output(title, amount) {
+    console.log(
+        title,
+        Intl.NumberFormat("en-NG", {
+            style: "currency",
+            currency: "NGN",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        }).format(amount),
+    );
 }
 
-c < d ? console.log("Is equal") : console.log("Not equal");
-//ternary
-//switch
+function isOdd(number) {
+    if (typeof number !== "number") {
+        throw TypeError("A number is required");
+    }
+    return Math.abs(number) % 2 === 1;
+}
+
+const number = 12.9;
+
+console.log(parseFloat(number) + 12);
