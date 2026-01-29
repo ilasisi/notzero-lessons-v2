@@ -14,31 +14,48 @@
             }
         </style>
     </head>
-    <body class="hjdh hjgdhgdhg">
-        <h1 id="hello" class="new-class">Hello Nigeria</h1>
-        <button onclick="h1.textContent = 'Hello World'">Toggle</button>
+    <body>
+        <button class="inc">Increment</button>
+        <span class="number">0</span>
+        <button class="dec">Decrement</button>
+
+        <button class="dblbtn">Double Click</button>
 
         <div>
-            <p class="class">Class 1</p>
-            <p class="class">Class 2</p>
-        </div>
-
-        <ul class="list">
-            <h3>Fruits</h3>
-        </ul>
-
-        <div>
-            <button onclick="on()">On</button>
-            <img id="bulb" src="./images/bulb-off.gif" />
-            <button onclick="off()">Off</button>
-        </div>
-
-        <div id="container">
-            <div>
-                <h1>Select by Query Selector</h1>
-                <h1>The second H1</h1>
+            <div class="title" style="padding: 10px; background-color: red">
+                <h5 draggable="true">
+                    Lorem ipsum dolor sit, amet consectetur
+                </h5>
             </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Expedita reprehenderit est molestiae harum quaerat recusandae,
+                vitae commodi quidem architecto voluptate eius quas aut mollitia
+                vero iusto quasi itaque fugiat autem.
+            </p>
+            <p class="description" style="display: none">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Explicabo et facere enim, assumenda quisquam, necessitatibus
+                rerum veritatis, dolorum officia natus odio aliquam cupiditate?
+                Culpa, qui unde. Nostrum quo qui eaque?
+            </p>
         </div>
+
+        <br />
+
+        <form>
+            <p class="text"></p>
+            <input required class="message" placeholder="Enter message" />
+            <select class="select">
+                <option>Item 1</option>
+                <option>Item 2</option>
+                <option>Item 3</option>
+                <option>Item 4</option>
+                <option>Item 5</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+
         <script src="./script.js"></script>
     </body>
 </html>

@@ -1,77 +1,167 @@
-//DOM Selection
+//Event Listeners
 
-//getElementById('hello') css - #hello {} returns Node
-const h1 = document.getElementById("hello");
-h1.style.color = "red";
-h1.classList.toggle("bg-blue");
+//onclick
+//ondblclick
+//onmouseup
+//onmousedown
+//oncontextmenu
+//onmouseenter
+//onmouseover
+//onmouseleave
+//onmouseout
 
-//getElementByClassName('hello') css - .hello {} returns HTMLCollection
-const classEl = document.getElementsByClassName("class");
+//Form events
+//oninput
+//onkeyup
+//onkeydown
+//onfocus
+//onblur
+//onchange
+//onselect
+//onsubmit
+//oninvalid
 
-const classElArray = Array.from(classEl);
+//draggable="true"
+//ondrag
+//ondragend
+//ondragover
+//ondragstart
+//ondragleave
+//ondrop
 
-classElArray.forEach((el) => {
-    el.style.color = "red";
+//window event
+//load
+//copy
+//cut
+//offline
+//online
+
+const incEl = document.querySelector(".inc");
+const decEl = document.querySelector(".dec");
+const numEl = document.querySelector(".number");
+const dblEl = document.querySelector(".dblbtn");
+const messageEl = document.querySelector(".message");
+const selectEl = document.querySelector(".select");
+
+const title = document.querySelector(".title");
+const description = document.querySelector(".description");
+
+incEl.addEventListener("click", increment);
+decEl.addEventListener("click", decrement);
+
+dblEl.addEventListener("dblclick", function () {
+    console.log("Double clicked!");
 });
 
-// for (let i = 0; i < classEl.length; i++) {
-//     const el = classEl[i];
+let number = 0;
 
-//     el.style.color = "red";
-// }
+function increment() {
+    number += 1;
+    numEl.textContent = number;
+}
 
-//getElementByTagName('p') css - p {} returns HTMLCollection
-const divEl = document.getElementsByTagName("div");
-console.log(divEl);
+function decrement() {
+    number -= 1;
+    numEl.textContent = number;
+}
 
-//querySelector('.container div h1') css - .container div h1 {} //returns Node
-const classEls = document.querySelector("#container div h1");
-classEls.style.color = "green";
-// console.log(classEls);
+// document.addEventListener("mouseup", (event) => {
+//     console.log(event);
+// });
 
-//querySelectorAll('.container div h1') css - .container div h1 {} returns NodeList
+// document.addEventListener("mousedown", (event) => {
+//     console.log(event);
+// });
 
-const queryAll = document.querySelectorAll("#container div h1");
-const fn = (el) => {
-    el.style.textDecoration = "underline";
-};
+// document.addEventListener("contextmenu", (event) => {
+//     console.log(event);
+// });
 
-queryAll.forEach(fn);
+// title.addEventListener("mouseenter", (event) => {
+//     console.log(event);
+//     description.style.display = "block";
+// });
 
-const list = document.querySelector(".list");
-list.innerHTML = `
-<li>List 1</li>
-<li>List 2</li>
-`;
+// title.addEventListener("mouseleave", (event) => {
+//     description.style.display = "none";
+// });
 
-const bulb = document.getElementById("bulb");
+// messageEl.addEventListener("input", (event) => {
+//     const message = event.target.value;
+//     document.querySelector(".text").textContent = message;
+// });
 
-const on = () => {
-    bulb.src = "./images/bulb-on.gif";
-    bulb.alt = "Bulb on";
-};
+// messageEl.addEventListener("keyup", (event) => {
+//     const message = event.target.value;
+//     console.log(message);
+// });
 
-const off = () => {
-    bulb.src = "./images/bulb-off.gif";
-    bulb.alt = "Bulb off";
-};
+// messageEl.addEventListener("keydown", (event) => {
+//     const message = event.target.value;
+//     console.log(message);
+// });
 
-h1.className += " classname";
+// messageEl.addEventListener("keyup", (event) => {
+//     const message = event.target.value;
 
-console.log(h1.className);
+//     if (event.key === "Enter") {
+//         alert(message);
+//     }
+// });
 
-console.log(h1.classList);
+// messageEl.focus();
 
-const fruits = ["Orange", "Pineapple", "Apple", "Banana"];
+// messageEl.addEventListener("focus", () => {
+//     console.log("Focused");
+// });
 
-const ul = document.createElement("ul");
-ul.innerHTML = "<h3>Fruits</h3>";
+// messageEl.addEventListener("blur", () => {
+//     console.log("Unfocused");
+// });
 
-fruits.forEach((fruit, index) => {
-    const li = document.createElement("li");
-    li.textContent = `${index + 1} - ${fruit}`;
+// messageEl.addEventListener("select", (event) => {
+//     console.log(event);
+// });
 
-    ul.appendChild(li);
+// selectEl.addEventListener("change", (event) => {
+//     console.log(event.target.value);
+// });
+
+document.querySelector("form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    console.log("Submitted");
 });
 
-document.body.appendChild(ul);
+messageEl.addEventListener("invalid", (event) => {
+    event.preventDefault();
+    messageEl.style.borderColor = "red";
+});
+
+// document.querySelector("h5").addEventListener("drag", (event) => {
+//     console.log(event.clientX, event.clientY);
+// });
+
+// document.querySelector("h5").addEventListener("dragstart", (event) => {
+//     console.log(event);
+// });
+
+// document.querySelector("h5").addEventListener("dragend", (event) => {
+//     console.log(event);
+// });
+
+// window.addEventListener("copy", (event) => {
+//     console.log(event);
+// });
+
+// window.addEventListener("cut", (event) => {
+//     console.log(event);
+// });
+
+window.addEventListener("offline", (event) => {
+    console.log("You are offline");
+});
+
+window.addEventListener("online", (event) => {
+    console.log("You are online");
+});
