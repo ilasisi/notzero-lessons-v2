@@ -4,10 +4,41 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-    </head>
-    <body>
-        <h1 id="hello">Hello Nigeria</h1>
 
+        <style>
+            .bg-blue {
+                background-color: blue;
+            }
+            .hide {
+                display: none;
+            }
+        </style>
+    </head>
+    <body class="hjdh hjgdhgdhg">
+        <h1 id="hello" class="new-class">Hello Nigeria</h1>
+        <button onclick="h1.textContent = 'Hello World'">Toggle</button>
+
+        <div>
+            <p class="class">Class 1</p>
+            <p class="class">Class 2</p>
+        </div>
+
+        <ul class="list">
+            <h3>Fruits</h3>
+        </ul>
+
+        <div>
+            <button onclick="on()">On</button>
+            <img id="bulb" src="./images/bulb-off.gif" />
+            <button onclick="off()">Off</button>
+        </div>
+
+        <div id="container">
+            <div>
+                <h1>Select by Query Selector</h1>
+                <h1>The second H1</h1>
+            </div>
+        </div>
         <script src="./script.js"></script>
     </body>
 </html>

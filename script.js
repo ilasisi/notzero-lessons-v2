@@ -1,166 +1,77 @@
-//Loops
+//DOM Selection
 
-//for
-let array = [];
-let brands = ["Google", "Meta", "Apple", "Amazon", "Netflix"];
+//getElementById('hello') css - #hello {} returns Node
+const h1 = document.getElementById("hello");
+h1.style.color = "red";
+h1.classList.toggle("bg-blue");
 
-// for (let i = 0; i < 9; i++) {
-//     array.push("Lesson" + " " + (i + 1));
+//getElementByClassName('hello') css - .hello {} returns HTMLCollection
+const classEl = document.getElementsByClassName("class");
+
+const classElArray = Array.from(classEl);
+
+classElArray.forEach((el) => {
+    el.style.color = "red";
+});
+
+// for (let i = 0; i < classEl.length; i++) {
+//     const el = classEl[i];
+
+//     el.style.color = "red";
 // }
 
-// for (let i = 0; i < brands.length; i++) {
-//     console.log(brands[i]);
-// }
+//getElementByTagName('p') css - p {} returns HTMLCollection
+const divEl = document.getElementsByTagName("div");
+console.log(divEl);
 
-//while
-let i = 0;
+//querySelector('.container div h1') css - .container div h1 {} //returns Node
+const classEls = document.querySelector("#container div h1");
+classEls.style.color = "green";
+// console.log(classEls);
 
-while (i < 0) {
-    array.push("Lesson" + " " + (i + 1));
-    i++;
-}
+//querySelectorAll('.container div h1') css - .container div h1 {} returns NodeList
 
-//do ... while
-do {
-    array.push("Lesson" + " " + (i + 1));
-    i++;
-} while (i < 9);
-
-// console.log(array);
-
-//for ... of //array
-const fruits = ["Mango", "Orange", "Banana"];
-
-// for (fruit of fruits) {
-//     console.log(fruit);
-// }
-
-//for ... in // object
-// const car = {
-//     brand: "Toyota",
-//     color: "Black",
-//     chasisNo: "123-HNKDMS",
-//     engine: 12762637627662,
-// };
-
-// for (key in car) {
-//     console.log(key + ": " + car[key]);
-// }
-
-// for (key in brands) {
-//     console.log(brands[key]);
-// }
-
-// const menu = [
-//     {
-//         name: "New Tab",
-//         icon: "tab",
-//         link: "https://www.tab.com",
-//     },
-//     {
-//         name: "New Window",
-//         icon: "window",
-//         link: "https://www.window.com",
-//     },
-//     {
-//         name: "New Incognito Mode",
-//         icon: "incognito",
-//         link: "https://www.incognito.com",
-//     },
-// ];
-
-// for (item of menu) {
-//     console.log(`${item.name} - ${item.icon} - ${item.link}`);
-// }
-
-//Functions
-function greet(name, age, location) {
-    console.log(
-        `My name is ${name}, I am ${age} years old, living at ${location}`,
-    );
-}
-
-const greet2 = function (name = "Guest") {
-    return "Hello " + name;
+const queryAll = document.querySelectorAll("#container div h1");
+const fn = (el) => {
+    el.style.textDecoration = "underline";
 };
 
-const greet3 = () => {
-    return 1 + 10;
+queryAll.forEach(fn);
+
+const list = document.querySelector(".list");
+list.innerHTML = `
+<li>List 1</li>
+<li>List 2</li>
+`;
+
+const bulb = document.getElementById("bulb");
+
+const on = () => {
+    bulb.src = "./images/bulb-on.gif";
+    bulb.alt = "Bulb on";
 };
 
-const greet4 = () => 2 + 2;
+const off = () => {
+    bulb.src = "./images/bulb-off.gif";
+    bulb.alt = "Bulb off";
+};
 
-greet("Bob", 20, "Lagos");
-greet("James", 12, "Calabar");
-greet("Doe", 45, "London");
-greet("John", 62, "Ghana");
+h1.className += " classname";
 
-const sum = (a = 1, b = 2) => a + b;
+console.log(h1.className);
 
-console.log(greet3());
-console.log(greet2());
-console.log(greet4());
+console.log(h1.classList);
 
-console.log(sum(10));
+const fruits = ["Orange", "Pineapple", "Apple", "Banana"];
 
-function loanShark(
-    loanAmount,
-    tenor,
-    interest = 0.075,
-    vat = 0.025,
-    managementFee = 0.01,
-) {
-    if (tenor <= 0 || tenor > 24) {
-        throw Error("Please enter a valid tenor");
-    }
+const ul = document.createElement("ul");
+ul.innerHTML = "<h3>Fruits</h3>";
 
-    if (tenor > 3 && tenor < 6) {
-        interest = 0.1;
-    } else if (tenor >= 6 && tenor < 9) {
-        interest = 0.12;
-    } else if (tenor >= 9 && tenor < 12) {
-        interest = 0.15;
-    } else if (tenor >= 12) {
-        interest = 0.2;
-    } else {
-        interest = 0.075;
-    }
+fruits.forEach((fruit, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${index + 1} - ${fruit}`;
 
-    const interestAmount = loanAmount * interest;
-    const vatAmount = (loanAmount - interestAmount) * vat;
-    const managementAmount = loanAmount * managementFee;
+    ul.appendChild(li);
+});
 
-    const totalRepaymentAmount =
-        loanAmount + interestAmount + vatAmount + managementAmount;
-
-    output("Total repayment amount", totalRepaymentAmount);
-    output("Interest amount", interestAmount);
-    output("VAT amount", vatAmount);
-    output("Management fee", managementAmount);
-}
-
-loanShark(2_000_000, 5);
-loanShark(2_000_000, 5, 0.05, 0.03);
-
-function output(title, amount) {
-    console.log(
-        title,
-        Intl.NumberFormat("en-NG", {
-            style: "currency",
-            currency: "NGN",
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-        }).format(amount),
-    );
-}
-
-function isOdd(number) {
-    if (typeof number !== "number") {
-        throw TypeError("A number is required");
-    }
-    return Math.abs(number) % 2 === 1;
-}
-
-const number = 12.9;
-
-console.log(parseFloat(number) + 12);
+document.body.appendChild(ul);
