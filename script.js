@@ -1,167 +1,116 @@
-//Event Listeners
+//Array Methods
 
-//onclick
-//ondblclick
-//onmouseup
-//onmousedown
-//oncontextmenu
-//onmouseenter
-//onmouseover
-//onmouseleave
-//onmouseout
+const numbers = [1, 2, 3, 5, 6, 7, 11, 55];
+const brands = ["Google", "Meta", "Netflix", "Amazon"];
+const arrayOfArray = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9, [10, 11, 12]],
+];
 
-//Form events
-//oninput
-//onkeyup
-//onkeydown
-//onfocus
-//onblur
-//onchange
-//onselect
-//onsubmit
-//oninvalid
+//Array.length
+// console.log(numbers.length);
 
-//draggable="true"
-//ondrag
-//ondragend
-//ondragover
-//ondragstart
-//ondragleave
-//ondrop
+//Array.toString()
+// console.log(numbers.toString());
 
-//window event
-//load
-//copy
-//cut
-//offline
-//online
+//Array.at()
+// console.log(brands.at(0));
 
-const incEl = document.querySelector(".inc");
-const decEl = document.querySelector(".dec");
-const numEl = document.querySelector(".number");
-const dblEl = document.querySelector(".dblbtn");
-const messageEl = document.querySelector(".message");
-const selectEl = document.querySelector(".select");
+//Array.join()
+// console.log(numbers.join("|"));
 
-const title = document.querySelector(".title");
-const description = document.querySelector(".description");
+//Array.flat()
+// console.log(arrayOfArray.flat().flat());
 
-incEl.addEventListener("click", increment);
-decEl.addEventListener("click", decrement);
+//Array.indexOf()
+// console.log(brands.indexOf("Netflix"));
 
-dblEl.addEventListener("dblclick", function () {
-    console.log("Double clicked!");
-});
+//Array.pop()
+const fruits = ["Mango", "Guava", "Pineapple"];
+// const removedFruit = fruits.pop();
 
-let number = 0;
+// console.log(fruits);
+// console.log(removedFruit);
 
-function increment() {
-    number += 1;
-    numEl.textContent = number;
-}
+//Array.push()
+const fruits2 = ["Banana", "Apple", "Grape"];
+// const newFruitLength = fruits2.push("Orange");
 
-function decrement() {
-    number -= 1;
-    numEl.textContent = number;
-}
+// console.log(fruits2);
+// console.log(newFruitLength);
 
-// document.addEventListener("mouseup", (event) => {
-//     console.log(event);
-// });
+//Array.shift()
+const fruits3 = ["Strawberry", "Carrot", "Cucumber"];
+// const removedFruit3 = fruits3.shift();
 
-// document.addEventListener("mousedown", (event) => {
-//     console.log(event);
-// });
+// console.log(fruits3);
+// console.log(removedFruit3);
+//Array.unshift()
+const fruits4 = ["Mango", "Guava", "Pineapple"];
+// const newFruitLength2 = fruits4.unshift("Orange");
 
-// document.addEventListener("contextmenu", (event) => {
-//     console.log(event);
-// });
+// console.log(fruits4);
+// console.log(newFruitLength2);
 
-// title.addEventListener("mouseenter", (event) => {
-//     console.log(event);
-//     description.style.display = "block";
-// });
+//Array.concat()
+const newFruits = fruits.concat(fruits2, fruits3);
 
-// title.addEventListener("mouseleave", (event) => {
-//     description.style.display = "none";
-// });
+// console.log(newFruits);
 
-// messageEl.addEventListener("input", (event) => {
-//     const message = event.target.value;
-//     document.querySelector(".text").textContent = message;
-// });
+//Array.splice()
+// fruits4[fruits4.length] = "new item";
+fruits4.splice(1, 0, "Banana");
 
-// messageEl.addEventListener("keyup", (event) => {
-//     const message = event.target.value;
-//     console.log(message);
-// });
+// console.log(fruits4);
 
-// messageEl.addEventListener("keydown", (event) => {
-//     const message = event.target.value;
-//     console.log(message);
-// });
+//Array.slice()
 
-// messageEl.addEventListener("keyup", (event) => {
-//     const message = event.target.value;
+const carBrands = ["Honda", "Toyota", "Volvo", "Tesla", "Benz"];
 
-//     if (event.key === "Enter") {
-//         alert(message);
-//     }
-// });
+const topCarBrand = carBrands.slice(0, 3);
+// console.log(topCarBrand);
+// console.log(carBrands);
 
-// messageEl.focus();
+//Array.find()
+const states = [
+    { name: "Oyo", index: 1, assigned: true },
+    { name: "Ogun", index: 2, assigned: false },
+    { name: "Lagos", index: 3, assigned: false },
+    { name: "Delta", index: 4, assigned: true },
+    { name: "Oyo", index: 45, assigned: true },
+];
 
-// messageEl.addEventListener("focus", () => {
-//     console.log("Focused");
-// });
+// const state = states.find((state) => state.name === "Oyo");
 
-// messageEl.addEventListener("blur", () => {
-//     console.log("Unfocused");
-// });
+// console.log(state);
 
-// messageEl.addEventListener("select", (event) => {
-//     console.log(event);
-// });
+// const toyota = carBrands.find((value) => value === "Toyota");
+// console.log(toyota);
 
-// selectEl.addEventListener("change", (event) => {
-//     console.log(event.target.value);
-// });
+//Array.include()
+// console.log(carBrands.includes("Toyota"));
 
-document.querySelector("form").addEventListener("submit", (event) => {
-    event.preventDefault();
+//Array.some()
+// const oyo = states.some((state) => state.name === "Oyo");
 
-    console.log("Submitted");
-});
+// console.log(oyo);
 
-messageEl.addEventListener("invalid", (event) => {
-    event.preventDefault();
-    messageEl.style.borderColor = "red";
-});
+//Array.every()
+// const assignedStates = states.every((state) => state.assigned === true);
 
-// document.querySelector("h5").addEventListener("drag", (event) => {
-//     console.log(event.clientX, event.clientY);
-// });
+// console.log(assignedStates);
 
-// document.querySelector("h5").addEventListener("dragstart", (event) => {
-//     console.log(event);
-// });
+//Array.filter()
+const notAssignedState = states.filter((state) => state.assigned === false);
 
-// document.querySelector("h5").addEventListener("dragend", (event) => {
-//     console.log(event);
-// });
+console.log(notAssignedState);
 
-// window.addEventListener("copy", (event) => {
-//     console.log(event);
-// });
+//Array.sort()
+console.log(brands.sort());
+//Array.reverse()
+console.log(brands.reverse());
+//Array.reduce()
 
-// window.addEventListener("cut", (event) => {
-//     console.log(event);
-// });
-
-window.addEventListener("offline", (event) => {
-    console.log("You are offline");
-});
-
-window.addEventListener("online", (event) => {
-    console.log("You are online");
-});
+//Array.forEach()
+//Array.map()
