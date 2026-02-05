@@ -1,6 +1,6 @@
 //Array Methods
 
-const numbers = [1, 2, 3, 5, 6, 7, 11, 55];
+const numbers = [1, 2, 55, 3, 5, 6, 7, 11];
 const brands = ["Google", "Meta", "Netflix", "Amazon"];
 const arrayOfArray = [
     [1, 2, 3],
@@ -104,13 +104,46 @@ const states = [
 //Array.filter()
 const notAssignedState = states.filter((state) => state.assigned === false);
 
-console.log(notAssignedState);
+// console.log(notAssignedState);
 
 //Array.sort()
+
+function compare(a, b) {
+    return a - b;
+}
+
+console.log(numbers.sort(compare));
 console.log(brands.sort());
+
 //Array.reverse()
 console.log(brands.reverse());
+
 //Array.reduce()
 
+function sum(acc, value) {
+    return acc + value;
+}
+
+const totalNumber = numbers.reduce(sum, 0);
+
+console.log(totalNumber);
+
 //Array.forEach()
+let total = 0;
+numbers.forEach((number) => {
+    total += number;
+});
+
+console.log(total);
+
 //Array.map()
+const newStates = states.map((state) => {
+    return {
+        no: `No: ${state.index}`,
+        nameOfState: state.name,
+        isEligible: state.assigned,
+    };
+});
+
+console.log(newStates);
+console.log(states);
