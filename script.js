@@ -32,22 +32,73 @@ promise
 const ul = document.querySelector(".list");
 const loading = document.querySelector(".loading");
 
-fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((response) => {
-        if (response.ok) {
-            response.forEach((post) => {
-                const li = document.createElement("li");
+// fetch("https://jsonplaceholder.typicode.com/posts")
+//     .then((response) => {
+//         if (response.ok) {
+//             return response.json();
+//         } else {
+//             throw new Error("Error from API");
+//         }
+//     })
+//     .then((response) => {
+//         response.forEach((post) => {
+//             const li = document.createElement("li");
 
-                li.innerHTML = `${post.id}: ${post.title}`;
+//             li.innerHTML = `${post.id}: ${post.title}`;
 
-                ul.appendChild(li);
-            });
-        } else {
-            throw new Error("Error from API");
+//             ul.appendChild(li);
+//         });
+//     })
+//     .catch((error) => console.log(error.message))
+//     .finally(() => {
+//         loading.style.display = "none";
+//     });
+
+//Async/Await
+// function doSomething() {
+//     console.log("Start");
+//     for (i = 0; i < 1e9; i++) {}
+//     console.log("End");
+// }
+
+async function doSomethingAsync() {
+    console.log("Start");
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+
+    console.log("End");
+}
+
+console.log("First");
+doSomethingAsync();
+console.log("Last");
+
+async function fetchPost() {
+    try {
+        const response = await fetch(
+            "https://jsonplaceholder.typicode.com/posts",
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed");
         }
-    })
-    .catch((error) => console.log(error.message))
-    .finally(() => {
+
+        const posts = await response.json();
+
+        posts.forEach((post) => {
+            const li = document.createElement("li");
+
+            li.innerHTML = `${post.id}: ${post.title}`;
+
+            ul.appendChild(li);
+        });
+    } catch (error) {
+        console.log(error.message);
+    } finally {
         loading.style.display = "none";
-    });
+    }
+}
+
+fetchPost();
+
+console.log("hjsghsghhgs");
