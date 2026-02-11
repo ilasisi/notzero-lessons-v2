@@ -1,61 +1,62 @@
-fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-    });
+hello();
 
-fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        title: "This is title",
-        body: "This is body",
-    }),
-})
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-    });
+function hello() {
+    console.log("Hello");
+}
 
-fetch("https://jsonplaceholder.typicode.com/posts/1", {
-    method: "PUT",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        title: "This is title",
-        // body: "This is body",
-    }),
-})
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-    });
+const arrowHello = (name, callbackFn) => {
+    console.log("Hello " + name);
 
-fetch("https://jsonplaceholder.typicode.com/posts/1", {
-    method: "PATCH",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        title: "This is title",
-        body: "This is body",
-    }),
-})
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-    });
+    setTimeout(callbackFn, 2000);
+};
 
-fetch("https://jsonplaceholder.typicode.com/posts/1", {
-    method: "DELETE",
-    headers: {
-        "Content-Type": "application/json",
-    },
-})
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-    });
+arrowHello("James", () => {
+    console.log("khhhhj");
+});
+
+const firstName = "John";
+const lastName = "Doe";
+
+const fullName = `${firstName} ${lastName}`;
+
+console.log(fullName);
+
+const promise = new Promise((resolve, reject) => {
+    const agree = false;
+
+    setTimeout(() => {
+        if (agree) {
+            resolve("Agreed");
+        } else {
+            reject("Disagree");
+        }
+    }, 2000);
+});
+
+promise
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error))
+    .finally(() => console.log("hghghghg"));
+
+// fetch("https://meowfacts.herokuapp.com/")
+//     .then((response) => response.json())
+//     .then((data) => console.log(data.data[0]));
+
+async function fetchData() {
+    console.log("Started fetching...");
+
+    try {
+        const response = await fetch("https://meowfacts.herokuapp.com/");
+
+        const data = await response.json();
+
+        console.log(data.data);
+    } catch (error) {
+        console.log(error.message);
+    }
+
+    console.log("Done fetching");
+}
+fetchData();
+
+console.log("End of file");
