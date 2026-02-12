@@ -1,62 +1,43 @@
-hello();
+import messageText, { multiply, subtract, sum } from "./helper.js";
+// import { PI, sum as sumUtil } from "./utils.js";
+import * as utils from "./utils.js";
 
-function hello() {
-    console.log("Hello");
-}
+//Array descructuring
+const array = [9, () => console.log("hjhhjhjh")];
 
-const arrowHello = (name, callbackFn) => {
-    console.log("Hello " + name);
+const [value, setValue] = array;
 
-    setTimeout(callbackFn, 2000);
+console.log(value);
+
+setValue();
+
+//Object Destructuring
+
+const personObj = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 90,
+    car: {
+        brand: "Volvo",
+    },
 };
 
-arrowHello("James", () => {
-    console.log("khhhhj");
-});
+// const { age, ...rest } = person;
 
-const firstName = "John";
-const lastName = "Doe";
+// console.log(rest);
+// console.log(personObj.car.brand);
 
-const fullName = `${firstName} ${lastName}`;
-
-console.log(fullName);
-
-const promise = new Promise((resolve, reject) => {
-    const agree = false;
-
-    setTimeout(() => {
-        if (agree) {
-            resolve("Agreed");
-        } else {
-            reject("Disagree");
-        }
-    }, 2000);
-});
-
-promise
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error))
-    .finally(() => console.log("hghghghg"));
-
-// fetch("https://meowfacts.herokuapp.com/")
-//     .then((response) => response.json())
-//     .then((data) => console.log(data.data[0]));
-
-async function fetchData() {
-    console.log("Started fetching...");
-
-    try {
-        const response = await fetch("https://meowfacts.herokuapp.com/");
-
-        const data = await response.json();
-
-        console.log(data.data);
-    } catch (error) {
-        console.log(error.message);
-    }
-
-    console.log("Done fetching");
+function personDetails({ firstName, lastName, age, car: { brand } }) {
+    console.log(`${firstName} ${lastName} - ${age} - ${brand}`);
 }
-fetchData();
 
-console.log("End of file");
+personDetails(personObj);
+
+console.log(sum(12, 10));
+console.log(utils.sum(1, 2, 4));
+console.log(subtract(10, 4));
+console.log(multiply(2, 10));
+console.log(utils.PI);
+console.log(messageText());
+
+// console.log(userName);
