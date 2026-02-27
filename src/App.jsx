@@ -1,31 +1,45 @@
-import { useState } from "react";
-import Button from "./components/Botton";
+import { Avatar } from "./components/Avatar";
+import { Card } from "./components/Card";
+import { Counter } from "./components/Counter";
 
-function App() {
-    const [count, setCount] = useState(100);
+const App = () => {
+    const person1 = {
+        name: "John Doe",
+        company: "Google Inc.",
+        age: 30,
+    };
 
-    function increment() {
-        setCount(count + 1);
-    }
-
-    function decrement() {
-        setCount(count - 1);
-    }
+    const person2 = {
+        name: "James Doe",
+        company: "Meta Inc.",
+        age: 50,
+    };
 
     return (
-        <div>
-            <p className="text-2xl font-bold text-red-600">Hello Tailwind</p>
-            <div style={{ display: "flex" }}>
-                <Button text="Login" />
-                <Button text="Register" style={{ backgroundColor: "yellow" }} />
-                <Button text="Forgot Password" />
-                <Button text="Login" />
-                <button onClick={increment}>Increase</button>
-                <p>{count}</p>
-                <button onClick={decrement}>Decrease</button>
+        <div className="space-y-5">
+            <Counter />
+            <div className="flex gap-4">
+                <Card person={person1} />
+                <Card person={person2} />
+            </div>
+            <div className="flex gap-4">
+                <Avatar name="james avatar" imageId="1bX5QH6" />
+                <Avatar
+                    name="doe avatar"
+                    imageId="YfeOqp2"
+                    width={80}
+                    height={80}
+                />
+                <Avatar name="john" imageId="OKS67lh" width={50} height={50} />
+                <Avatar
+                    name="man avatar"
+                    imageId="1bX5QH6"
+                    width={30}
+                    height={30}
+                />
             </div>
         </div>
     );
-}
+};
 
 export default App;
