@@ -1,6 +1,8 @@
 import { Avatar } from "./components/Avatar";
 import { Card } from "./components/Card";
 import { Counter } from "./components/Counter";
+import { Faq } from "./components/Faq";
+import { UpdateName } from "./components/UpdateName";
 
 const App = () => {
     const person1 = {
@@ -17,6 +19,8 @@ const App = () => {
 
     return (
         <div className="space-y-5">
+            <Faq />
+            <UpdateName />
             <Counter />
             <div className="flex gap-4">
                 <Card person={person1} />
