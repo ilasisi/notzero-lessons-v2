@@ -1,7 +1,9 @@
 import { Avatar } from "./components/Avatar";
 import { Card } from "./components/Card";
 import { Counter } from "./components/Counter";
+import { Extentions } from "./components/Extentions";
 import { Faq } from "./components/Faq";
+import { GithubProfileSearch } from "./components/GithubProfileSearch";
 import { UpdateName } from "./components/UpdateName";
 
 const App = () => {
@@ -19,7 +21,9 @@ const App = () => {
 
     return (
         <div className="space-y-5">
-            <Faq />
+            <Extentions />
+            {/* <GithubProfileSearch /> */}
+            {/* <Faq />
             <UpdateName />
             <Counter />
             <div className="flex gap-4">
@@ -41,7 +45,7 @@ const App = () => {
                     width={30}
                     height={30}
                 />
-            </div>
+            </div> */}
         </div>
     );
 };
