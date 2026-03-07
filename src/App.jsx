@@ -21,8 +21,8 @@ const App = () => {
 
     return (
         <div className="space-y-5">
-            <BrowserExtentions />
-            {/* <GithubProfileSearch /> */}
+            {/* <BrowserExtentions /> */}
+            <GithubProfileSearch />
             {/* <Faq />
             <UpdateName />
             <Counter />
