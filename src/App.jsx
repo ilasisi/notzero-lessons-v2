@@ -1,7 +1,7 @@
 import { Avatar } from "./components/Avatar";
+import { BrowserExtentions } from "./components/BrowserExtentions";
 import { Card } from "./components/Card";
 import { Counter } from "./components/Counter";
-import { Extentions } from "./components/Extentions";
 import { Faq } from "./components/Faq";
 import { GithubProfileSearch } from "./components/GithubProfileSearch";
 import { UpdateName } from "./components/UpdateName";
@@ -21,7 +21,7 @@ const App = () => {
 
     return (
         <div className="space-y-5">
-            <Extentions />
+            <BrowserExtentions />
             {/* <GithubProfileSearch /> */}
             {/* <Faq />
             <UpdateName />
