@@ -4,6 +4,7 @@ import { Card } from "./components/Card";
 import { Counter } from "./components/Counter";
 import { Faq } from "./components/Faq";
 import { GithubProfileSearch } from "./components/GithubProfileSearch";
+import { InputValidation } from "./components/InputValidation";
 import { UpdateName } from "./components/UpdateName";
 
 const App = () => {
@@ -21,8 +22,9 @@ const App = () => {
 
     return (
         <div className="space-y-5">
-            {/* <BrowserExtentions /> */}
-            <GithubProfileSearch />
+            <InputValidation />
+            <BrowserExtentions />
+            {/* <GithubProfileSearch /> */}
             {/* <Faq />
             <UpdateName />
             <Counter />
