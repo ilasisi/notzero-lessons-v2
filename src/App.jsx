@@ -1,6 +1,8 @@
 import { Avatar } from "./components/Avatar";
 import { BrowserExtentions } from "./components/BrowserExtentions";
 import { Card } from "./components/Card";
+import { ContactForm } from "./components/ContactForm";
+import { ContactFormWithRHF } from "./components/ContactFormWithRHF";
 import { Counter } from "./components/Counter";
 import { Faq } from "./components/Faq";
 import { GithubProfileSearch } from "./components/GithubProfileSearch";
@@ -22,8 +24,10 @@ const App = () => {
 
     return (
         <div className="space-y-5">
-            <InputValidation />
-            <BrowserExtentions />
+            <ContactFormWithRHF />
+            {/* <ContactForm /> */}
+            {/* <InputValidation />
+            <BrowserExtentions /> */}
             {/* <GithubProfileSearch /> */}
             {/* <Faq />
             <UpdateName />
