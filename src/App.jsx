@@ -8,6 +8,7 @@ import { Faq } from "./components/Faq";
 import { GithubProfileSearch } from "./components/GithubProfileSearch";
 import { InputValidation } from "./components/InputValidation";
 import { UpdateName } from "./components/UpdateName";
+import { UseEffect } from "./components/UseEffect";
 
 const App = () => {
     const person1 = {
@@ -24,7 +25,8 @@ const App = () => {
 
     return (
         <div className="space-y-5">
-            <ContactFormWithRHF />
+            <UseEffect />
+            {/* <ContactFormWithRHF /> */}
             {/* <ContactForm /> */}
             {/* <InputValidation />
             <BrowserExtentions /> */}

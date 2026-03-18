@@ -6,14 +6,24 @@ import { Textarea } from "./Textarea";
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Select } from "./Select";
 
 const ContactSchema = z.object({
     first_name: z.string().min(3, "First name must be greater 2 chars."),
     last_name: z.string().min(3, "Last name must be greater 2 chars."),
     email: z.email("Enter a valid email address"),
+    gender: z.enum(["male", "female"], "Either male or female"),
+    occupation: z.string().min(1, "Occupation is required"),
     message: z.string().min(10, "Message must be greater 9 chars."),
     consent: z.boolean(),
 });
+
+const occupations = [
+    { value: "doctor", label: "Doctor" },
+    { value: "lawyer", label: "Lawyer" },
+    { value: "engineer", label: "Engineer" },
+    { value: "lecturer", label: "Lecturer" },
+];
 
 export const ContactFormWithRHF = () => {
     const [isLoading, setIsLoading] = useState();
@@ -81,6 +91,23 @@ export const ContactFormWithRHF = () => {
                                 {...register("email")}
                             />
                         </div>
+                        <Select
+                            label="Gender"
+                            placeholder="Select gender"
+                            options={[
+                                { value: "male", label: "Male" },
+                                { value: "female", label: "Female" },
+                            ]}
+                            errors={errors}
+                            {...register("gender")}
+                        />
+                        <Select
+                            label="Occupation"
+                            placeholder="Select occupation"
+                            options={occupations}
+                            errors={errors}
+                            {...register("occupation")}
+                        />
                         <div className="sm:col-span-2">
                             <Textarea
                                 name="message"

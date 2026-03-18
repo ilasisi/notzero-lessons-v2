@@ -1,5 +1,12 @@
-export const Input = ({ label, className, errors, ...props }) => {
-    const error = errors?.[props.name];
+export const Select = ({
+    options = [],
+    label,
+    placeholder,
+    className,
+    errors,
+    ...props
+}) => {
+    const error = errors[props.name];
 
     return (
         <div className="space-y-1">
@@ -14,11 +21,18 @@ export const Input = ({ label, className, errors, ...props }) => {
                     )}
                 </label>
             )}
-            <input
+            <select
                 className={`border w-full border-neutral-300 py-2 px-3 rounded-xl ${error && "border-red-500 text-red-500 outline-red-500"} ${className}`}
                 id={props.id}
                 {...props}
-            />
+            >
+                <option value="">{placeholder}</option>
+                {options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
+            </select>
             {error && (
                 <span className="text-red-500 text-sm">{error?.message}</span>
             )}
