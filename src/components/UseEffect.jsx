@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Input } from "./Input";
+import { Link } from "react-router-dom";
 
 const fetchPosts = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -40,7 +41,13 @@ export const UseEffect = () => {
             <p>{count}</p>
             <button onClick={() => setCount(count + 1)}>Count</button>
             {posts.map((post) => (
-                <p key={post.title}>{post.title}</p>
+                <Link
+                    className="block underline"
+                    to={`/posts/${post.id}`}
+                    key={post.title}
+                >
+                    {post.title}
+                </Link>
             ))}
         </div>
     );

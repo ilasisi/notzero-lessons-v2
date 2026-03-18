@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { rawExtensions } from "../lib/extensions";
 import { MoonIcon, SunIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const FILTERS = ["all", "active", "inactive"];
 
@@ -88,37 +89,41 @@ const FilterSection = ({ selected, setFilter }) => {
 
 const ExtensionItem = ({ item, onDelete }) => {
     return (
-        <div className="border relative h-38 border-neutral-300 rounded-xl p-2 bg-neutral-100 dark:bg-slate-800 dark:border-slate-700">
-            <div className="space-y-6">
-                <div className="flex gap-3">
-                    <img className="size-10" src={item.logo} />
-                    <div>
-                        <p className="font-bold dark:text-white">{item.name}</p>
-                        <p className="text-xs text-neutral-600 dark:text-neutral-300">
-                            {item.description}
-                        </p>
+        <Link to={`/extentions/${item.name}`}>
+            <div className="border relative h-38 border-neutral-300 rounded-xl p-2 bg-neutral-100 dark:bg-slate-800 dark:border-slate-700">
+                <div className="space-y-6">
+                    <div className="flex gap-3">
+                        <img className="size-10" src={item.logo} />
+                        <div>
+                            <p className="font-bold dark:text-white">
+                                {item.name}
+                            </p>
+                            <p className="text-xs text-neutral-600 dark:text-neutral-300">
+                                {item.description}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="absolute px-2 bottom-2 left-0 w-full flex justify-between">
+                        <button
+                            onClick={onDelete}
+                            className="border rounded-full border-neutral-300 text-xs px-3 py-1 dark:border-neutral-500"
+                        >
+                            Remove
+                        </button>
+                        <label className="inline-flex items-center cursor-pointer">
+                            <input
+                                defaultChecked={item.isActive}
+                                type="checkbox"
+                                className="sr-only peer"
+                            />
+
+                            <div className="relative w-7 h-4 bg-gray-300 dark:bg-gray-600 rounded-full peer-checked:bg-orange-600 transition-colors group">
+                                <div className="absolute top-0.5 left-0.5 size-3 bg-white rounded-full transition-transform transform group-peer-checked:translate-x-3"></div>
+                            </div>
+                        </label>
                     </div>
                 </div>
-                <div className="absolute px-2 bottom-2 left-0 w-full flex justify-between">
-                    <button
-                        onClick={onDelete}
-                        className="border rounded-full border-neutral-300 text-xs px-3 py-1 dark:border-neutral-500"
-                    >
-                        Remove
-                    </button>
-                    <label className="inline-flex items-center cursor-pointer">
-                        <input
-                            defaultChecked={item.isActive}
-                            type="checkbox"
-                            className="sr-only peer"
-                        />
-
-                        <div className="relative w-7 h-4 bg-gray-300 dark:bg-gray-600 rounded-full peer-checked:bg-orange-600 transition-colors group">
-                            <div className="absolute top-0.5 left-0.5 size-3 bg-white rounded-full transition-transform transform group-peer-checked:translate-x-3"></div>
-                        </div>
-                    </label>
-                </div>
             </div>
-        </div>
+        </Link>
     );
 };

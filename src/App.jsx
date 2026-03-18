@@ -1,61 +1,38 @@
-import { Avatar } from "./components/Avatar";
-import { BrowserExtentions } from "./components/BrowserExtentions";
-import { Card } from "./components/Card";
-import { ContactForm } from "./components/ContactForm";
-import { ContactFormWithRHF } from "./components/ContactFormWithRHF";
-import { Counter } from "./components/Counter";
-import { Faq } from "./components/Faq";
-import { GithubProfileSearch } from "./components/GithubProfileSearch";
-import { InputValidation } from "./components/InputValidation";
-import { UpdateName } from "./components/UpdateName";
-import { UseEffect } from "./components/UseEffect";
+import { NavLink, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import Extension from "./pages/Extension";
+import ExtensionDetails from "./pages/ExtensionDetails";
+import Posts from "./pages/Posts";
+import PostDetail from "./pages/PostDetail";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
-    const person1 = {
-        name: "John Doe",
-        company: "Google Inc.",
-        age: 30,
-    };
-
-    const person2 = {
-        name: "James Doe",
-        company: "Meta Inc.",
-        age: 50,
-    };
-
     return (
         <div className="space-y-5">
-            <UseEffect />
-            {/* <ContactFormWithRHF /> */}
-            {/* <ContactForm /> */}
-            {/* <InputValidation />
-            <BrowserExtentions /> */}
-            {/* <GithubProfileSearch /> */}
-            {/* <Faq />
-            <UpdateName />
-            <Counter />
-            <div className="flex gap-4">
-                <Card person={person1} />
-                <Card person={person2} />
-            </div>
-            <div className="flex gap-4">
-                <Avatar name="james avatar" imageId="1bX5QH6" />
-                <Avatar
-                    name="doe avatar"
-                    imageId="YfeOqp2"
-                    width={80}
-                    height={80}
-                />
-                <Avatar name="john" imageId="OKS67lh" width={50} height={50} />
-                <Avatar
-                    name="man avatar"
-                    imageId="1bX5QH6"
-                    width={30}
-                    height={30}
-                />
-            </div> */}
+            <nav className="bg-blue-500 gap-3 flex justify-center items-center p-3 max-w-xl mx-auto m-3 rounded-2xl">
+                <NavItem to="/">Home</NavItem>
+                <NavItem to="/extentions">Extensions</NavItem>
+                <NavItem to="/posts">Posts</NavItem>
+                <NavItem to="/about">About</NavItem>
+                <NavItem to="/contact">Contact</NavItem>
+            </nav>
         </div>
     );
 };
 
 export default App;
+
+const NavItem = ({ to, children }) => {
+    return (
+        <NavLink
+            className={({ isActive }) =>
+                isActive ? "text-white" : "text-neutral-600"
+            }
+            to={to}
+        >
+            {children}
+        </NavLink>
+    );
+};
