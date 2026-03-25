@@ -8,24 +8,20 @@ import {
     SunIcon,
     TwitterIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { fetchGithubProfile } from "../services/githubService";
 import { formatDate } from "../lib/helper";
+import { ThemeContext } from "../context/ThemeProvider";
+import { useTheme } from "../store/themeStore";
 
 export const GithubProfileSearch = () => {
-    const [theme, setTheme] = useState("light");
     const [username, setUsername] = useState("");
     const [user, setUser] = useState(undefined);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(undefined);
 
-    const toggleTheme = () => {
-        const htmlEl = document.documentElement;
-
-        htmlEl.classList.toggle("dark");
-
-        setTheme((prev) => (prev === "light" ? "dark" : "light"));
-    };
+    // const { theme, toggleTheme } = useContext(ThemeContext);
+    const { theme, toggleTheme } = useTheme();
 
     const handleSearch = async (event) => {
         event.preventDefault();

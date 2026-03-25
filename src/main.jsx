@@ -11,9 +11,11 @@ import ExtensionDetails from "./pages/ExtensionDetails.jsx";
 import Posts from "./pages/Posts.jsx";
 import PostDetail from "./pages/PostDetail.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import ThemeProvider from "./context/ThemeProvider.jsx";
 
 createRoot(document.querySelector(".app")).render(
     <StrictMode>
+        {/* <ThemeProvider> */}
         <BrowserRouter>
             <App />
 
@@ -31,5 +33,6 @@ createRoot(document.querySelector(".app")).render(
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
+        {/* </ThemeProvider> */}
     </StrictMode>,
 );

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { rawExtensions } from "../lib/extensions";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../context/ThemeProvider";
+import { useTheme } from "../store/themeStore";
 
 const FILTERS = ["all", "active", "inactive"];
 
@@ -40,15 +42,9 @@ export const BrowserExtentions = () => {
 };
 
 const Header = () => {
-    const [theme, setTheme] = useState("light");
+    // const { theme, toggleTheme } = useContext(ThemeContext);
+    const { theme, toggleTheme } = useTheme();
 
-    const toggleTheme = () => {
-        const newTheme = theme === "light" ? "dark" : "light";
-
-        document.documentElement.classList.toggle("dark", newTheme === "dark");
-
-        setTheme(newTheme);
-    };
     return (
         <div className="bg-neutral-200 dark:bg-slate-800 rounded-lg py-2 px-3">
             <div className="flex justify-between">

@@ -1,14 +1,15 @@
-import { NavLink, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import About from "./pages/About";
-import Extension from "./pages/Extension";
-import ExtensionDetails from "./pages/ExtensionDetails";
-import Posts from "./pages/Posts";
-import PostDetail from "./pages/PostDetail";
-import NotFound from "./pages/NotFound";
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useTheme } from "./store/themeStore";
 
 const App = () => {
+    const { theme } = useTheme();
+    useEffect(() => {
+        const htmlEl = document.documentElement;
+
+        htmlEl.classList.toggle("dark", theme === "dark");
+    }, [theme]);
+
     return (
         <div className="space-y-5">
             <nav className="bg-blue-500 gap-3 flex justify-center items-center p-3 max-w-xl mx-auto m-3 rounded-2xl">
